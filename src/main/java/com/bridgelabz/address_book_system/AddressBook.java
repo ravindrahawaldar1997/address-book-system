@@ -39,44 +39,46 @@ public class AddressBook {
     }
 
     public void editContact() {
+
         System.out.println("Enter the first name which you want to change");
         String name = scan.next();
         for (int i = 0; i < contacts.size(); i++) {
+            final int firstName = 1, lastName = 2, address = 3, city = 4, state = 5, zipCode = 6, phoneNumber = 7, email = 8;
             if (name.equalsIgnoreCase(contacts.get(i).firstName)) {
                 System.out.println("Choose what you want to change :");
                 System.out.println(" 1.first name \n 2.last name \n 3.address \n 4.city \n 5.state \n 6.zip code " +
                         "\n 7.phone number \n 8.email");
                 int choice = scan.nextInt();
                 switch (choice) {
-                    case 1:
+                    case firstName:
                         System.out.println("Please Enter the name to be updated");
                         contacts.get(i).firstName = scan.next();
                         break;
-                    case 2:
+                    case lastName:
                         System.out.println("Please Enter the lastname to be updated");
                         contacts.get(i).lastName = scan.next();
                         break;
-                    case 3:
+                    case address:
                         System.out.println("Please Enter the address to be updated");
                         contacts.get(i).address = scan.next();
                         break;
-                    case 4:
+                    case city:
                         System.out.println("Please Enter the city to be updated");
                         contacts.get(i).city = scan.next();
                         break;
-                    case 5:
+                    case state:
                         System.out.println("Please enter the state to be updated");
                         contacts.get(i).state = scan.next();
                         break;
-                    case 6:
+                    case zipCode:
                         System.out.println("Please Enter the zip code to be updated");
                         contacts.get(i).zipCode = scan.nextInt();
                         break;
-                    case 7:
+                    case phoneNumber:
                         System.out.println("Please Enter the phone number to be updated");
                         contacts.get(i).phoneNumber = scan.nextLong();
                         break;
-                    case 8:
+                    case email:
                         System.out.println("Please Enter the email to be updated");
                         contacts.get(i).email = scan.next();
                         break;
@@ -88,6 +90,23 @@ public class AddressBook {
             }
         }
         System.out.println("Address book after editing contact ");
+        contacts.forEach(person -> System.out.println(person));
+    }
+
+    public void deleteContact() {
+        System.out.println("Enter the contact name which you want to delete");
+        String name = scan.next();
+        for (int i = 0; i < contacts.size(); i++) {
+            if (name.equalsIgnoreCase(contacts.get(i).firstName)) {
+                contacts.remove(i);
+            }
+        }
+        System.out.println("Address book deleted successfully");
+        System.out.println("Address book after deleting contact ");
+        contacts.forEach(person -> System.out.println(person));
+    }
+
+    void printContact() {
         contacts.forEach(person -> System.out.println(person));
     }
 }
