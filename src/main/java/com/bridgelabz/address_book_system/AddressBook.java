@@ -1,4 +1,5 @@
 package com.bridgelabz.address_book_system;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,5 +36,58 @@ public class AddressBook {
         contacts.add(contact);
         System.out.println(contact);
         return contact;
+    }
+
+    public void editContact() {
+        System.out.println("Enter the first name which you want to change");
+        String name = scan.next();
+        for (int i = 0; i < contacts.size(); i++) {
+            if (name.equalsIgnoreCase(contacts.get(i).firstName)) {
+                System.out.println("Choose what you want to change :");
+                System.out.println(" 1.first name \n 2.last name \n 3.address \n 4.city \n 5.state \n 6.zip code " +
+                        "\n 7.phone number \n 8.email");
+                int choice = scan.nextInt();
+                switch (choice) {
+                    case 1:
+                        System.out.println("Please Enter the name to be updated");
+                        contacts.get(i).firstName = scan.next();
+                        break;
+                    case 2:
+                        System.out.println("Please Enter the lastname to be updated");
+                        contacts.get(i).lastName = scan.next();
+                        break;
+                    case 3:
+                        System.out.println("Please Enter the address to be updated");
+                        contacts.get(i).address = scan.next();
+                        break;
+                    case 4:
+                        System.out.println("Please Enter the city to be updated");
+                        contacts.get(i).city = scan.next();
+                        break;
+                    case 5:
+                        System.out.println("Please enter the state to be updated");
+                        contacts.get(i).state = scan.next();
+                        break;
+                    case 6:
+                        System.out.println("Please Enter the zip code to be updated");
+                        contacts.get(i).zipCode = scan.nextInt();
+                        break;
+                    case 7:
+                        System.out.println("Please Enter the phone number to be updated");
+                        contacts.get(i).phoneNumber = scan.nextLong();
+                        break;
+                    case 8:
+                        System.out.println("Please Enter the email to be updated");
+                        contacts.get(i).email = scan.next();
+                        break;
+                    default:
+                        System.out.println("Invalid input");
+
+                }
+
+            }
+        }
+        System.out.println("Address book after editing contact ");
+        contacts.forEach(person -> System.out.println(person));
     }
 }
