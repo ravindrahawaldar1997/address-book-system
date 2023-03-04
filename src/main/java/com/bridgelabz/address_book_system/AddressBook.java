@@ -1,9 +1,12 @@
 package com.bridgelabz.address_book_system;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class AddressBook {
+    HashMap<String, AddressBook> hashMap = new HashMap();
     ArrayList<Contact> contacts = new ArrayList<Contact>();
     Scanner scan = new Scanner(System.in);
 
@@ -108,6 +111,21 @@ public class AddressBook {
         System.out.println("Address book deleted successfully");
         System.out.println("Address book after deleting contact ");
         contacts.forEach(person -> System.out.println(person));
+    }
+
+    public void multipleAddressBook() {
+        System.out.println("Enter how many address book you want to add");
+        int multipleBook = scan.nextInt();
+        AddressBook addressBook = new AddressBook();
+        for (int i = 0; i < multipleBook; i++) {
+            addressBook.addContact();
+            addressBook.editContact();
+            addressBook.deleteContact();
+            hashMap.put("Friends", addressBook);
+        }
+        for (Map.Entry<String, AddressBook> entry : addressBook.hashMap.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
     }
 
 

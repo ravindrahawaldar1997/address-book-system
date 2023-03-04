@@ -10,10 +10,10 @@ public class AddressBookMain {
 
         boolean result = true;
         while (result) {
-            final int addContact = 1, editContact = 2, deleteContact = 3, printContact = 4;
+            final int addContact = 1, editContact = 2, deleteContact = 3, printContact = 4, multipleAddressBook = 5;
             Scanner sc = new Scanner(System.in);
             System.out.println(" press 1. to add contact\n press 2. to edit contact\n " +
-                    "press 3. to delete\n press 4 to print ");
+                    "press 3. to delete\n press 4 to print \n press 5 multiple book");
             int choice = sc.nextInt();
             switch (choice) {
                 case addContact:
@@ -27,6 +27,9 @@ public class AddressBookMain {
                     break;
                 case printContact:
                     addressBook.printContact();
+                    break;
+                case multipleAddressBook:
+                    addressBook.multipleAddressBook();
                     break;
                 default:
                     result = false;
